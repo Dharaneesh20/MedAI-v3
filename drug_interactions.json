@@ -1,0 +1,22 @@
+{
+  "aspirin": {
+    "warfarin": "\u26a0\ufe0f HIGH RISK: Increased bleeding risk. Monitor INR closely.",
+    "ibuprofen": "\u26a0\ufe0f MODERATE: Increased GI bleeding risk.",
+    "metformin": "\u2705 LOW RISK: Generally safe combination."
+  },
+  "warfarin": {
+    "aspirin": "\u26a0\ufe0f HIGH RISK: Increased bleeding risk. Monitor INR closely.",
+    "amoxicillin": "\u26a0\ufe0f MODERATE: May increase warfarin effect.",
+    "vitamin_k": "\u26a0\ufe0f MODERATE: May decrease warfarin effect."
+  },
+  "lisinopril": {
+    "potassium": "\u26a0\ufe0f MODERATE: Risk of hyperkalemia.",
+    "aspirin": "\u26a0\ufe0f LOW: May reduce antihypertensive effect.",
+    "metformin": "\u2705 LOW RISK: Generally safe combination."
+  },
+  "metformin": {
+    "aspirin": "\u2705 LOW RISK: Generally safe combination.",
+    "lisinopril": "\u2705 LOW RISK: Generally safe combination.",
+    "alcohol": "\u26a0\ufe0f MODERATE: Risk of lactic acidosis."
+  }
+}

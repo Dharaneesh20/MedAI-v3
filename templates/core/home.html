@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">MedAi Drug Interaction Analyzer</h1>
+                <p class="lead mb-4">Advanced AI-powered analysis to help you understand potential drug interactions and ensure safer medication management.</p>
+                <div class="d-flex flex-wrap gap-2">
+                    {% if user.is_authenticated %}
+                    <a href="/dashboard/" class="btn btn-light btn-lg">
+                        <i class="fas fa-tachometer-alt"></i> Go to Dashboard
+                    </a>
+                    {% else %}
+                    <a href="/auth/register/" class="btn btn-light btn-lg">
+                        <i class="fas fa-user-plus"></i> Get Started
+                    </a>
+                    <a href="/auth/login/" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="text-center">
+                    <i class="fas fa-pills fa-10x opacity-75"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-5 fw-bold">How It Works</h2>
+                <p class="lead">Multiple ways to analyze your medications</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Text Input -->
+            <div class="col-md-4">
+                <div class="card feature-card h-100 text-method text-white">
+                    <div class="card-body text-center">
+                        <i class="fas fa-keyboard fa-3x mb-3"></i>
+                        <h4>Text Input</h4>
+                        <p>Simply type in your medication names and get instant analysis of potential interactions.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Image OCR -->
+            <div class="col-md-4">
+                <div class="card feature-card h-100 image-method text-white">
+                    <div class="card-body text-center">
+                        <i class="fas fa-camera fa-3x mb-3"></i>
+                        <h4>Image Recognition</h4>
+                        <p>Upload photos of medication labels or prescriptions for automatic text extraction and analysis.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Voice Input -->
+            <div class="col-md-4">
+                <div class="card feature-card h-100 voice-method text-dark">
+                    <div class="card-body text-center">
+                        <i class="fas fa-microphone fa-3x mb-3"></i>
+                        <h4>Voice Recognition</h4>
+                        <p>Speak your medication names and let our AI convert speech to text for analysis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features List -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="fw-bold mb-4">Key Features</h3>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="d-flex">
+                            <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+                            <div>
+                                <h6 class="mb-1">AI-Powered Analysis</h6>
+                                <small class="text-muted">Using advanced HuggingFace language models for accurate drug interaction detection.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex">
+                            <i class="fas fa-shield-alt text-success me-3 mt-1"></i>
+                            <div>
+                                <h6 class="mb-1">Safety Scoring</h6>
+                                <small class="text-muted">Get safety scores and personalized recommendations based on your medical history.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex">
+                            <i class="fas fa-history text-success me-3 mt-1"></i>
+                            <div>
+                                <h6 class="mb-1">Conversation History</h6>
+                                <small class="text-muted">Keep track of all your analyses and review previous consultations.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex">
+                            <i class="fas fa-user-md text-success me-3 mt-1"></i>
+                            <div>
+                                <h6 class="mb-1">Medical Profile</h6>
+                                <small class="text-muted">Store your medical information for more personalized analysis.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="bg-white p-4 rounded shadow-sm">
+                    <h4 class="text-center mb-3">
+                        <i class="fas fa-exclamation-triangle text-warning"></i>
+                        Important Disclaimer
+                    </h4>
+                    <p class="text-center mb-0">
+                        This tool provides informational analysis only and should not replace professional medical advice. 
+                        Always consult with your healthcare provider or pharmacist before making any changes to your medications.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+{% if not user.is_authenticated %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h3 class="fw-bold mb-3">Ready to Get Started?</h3>
+                <p class="lead mb-4">Create your account and start analyzing your medications safely.</p>
+                <a href="/auth/register/" class="btn btn-primary btn-lg me-3">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </a>
+                <a href="/auth/login/" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-sign-in-alt"></i> Sign In
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

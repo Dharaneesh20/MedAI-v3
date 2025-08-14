@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - MedAi{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Register for MedAi</h3>
+                </div>
+                <div class="card-body">
+                    <form id="registerForm" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="first_name" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="last_name" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password_confirm" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="password_confirm" name="password_confirm" required>
+                        </div>
+                        
+                        <h5>Medical Information (Optional)</h5>
+                        <div class="mb-3">
+                            <label for="age" class="form-label">Age</label>
+                            <input type="number" class="form-control" id="age" name="age" min="1" max="150">
+                        </div>
+                        <div class="mb-3">
+                            <label for="weight" class="form-label">Weight (kg)</label>
+                            <input type="number" class="form-control" id="weight" name="weight" step="0.1" min="1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="height" class="form-label">Height (cm)</label>
+                            <input type="number" class="form-control" id="height" name="height" step="0.1" min="1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="allergies" class="form-label">Known Allergies</label>
+                            <textarea class="form-control" id="allergies" name="allergies" rows="3" 
+                                      placeholder="List any known drug allergies or medical conditions"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="medical_conditions" class="form-label">Medical Conditions</label>
+                            <textarea class="form-control" id="medical_conditions" name="medical_conditions" rows="3" 
+                                      placeholder="List any current medical conditions"></textarea>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('registerForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries());
+    
+    // Check password match
+    if (data.password !== data.password_confirm) {
+        alert('Passwords do not match!');
+        return;
+    }
+    
+    // Keep password_confirm in data for server validation
+    // The serializer will handle removing it after validation
+    
+    try {
+        const response = await fetch('/auth/register/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+            },
+            body: JSON.stringify(data)
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            alert('Registration successful!');
+            // Store token and redirect to dashboard
+            localStorage.setItem('authToken', result.token);
+            window.location.href = '/dashboard/';
+        } else {
+            alert('Registration failed: ' + JSON.stringify(result));
+        }
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
+});
+</script>
+{% endblock %}

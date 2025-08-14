@@ -1,0 +1,41 @@
+# Django FastAPI MedAi Project
+Django==4.2.0
+fastapi==0.104.1
+uvicorn==0.24.0
+djangorestframework==3.14.0
+django-cors-headers==4.3.1
+python-multipart==0.0.6
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-decouple==3.8
+
+# Database
+psycopg2-binary==2.9.7
+
+# AI/ML
+transformers==4.36.0
+torch==2.1.0
+accelerate==0.24.0
+tokenizers==0.15.0
+
+# OCR
+pytesseract==0.3.10
+Pillow==10.0.1
+opencv-python==4.8.1.78
+
+# Speech Recognition
+SpeechRecognition==3.10.0
+pyaudio==0.2.11
+pydub==0.25.1
+
+# Utilities
+requests==2.31.0
+python-dotenv==1.0.0
+celery==5.3.4
+redis==5.0.1
+
+# Development
+pytest==7.4.3
+pytest-django==4.7.0
+black==23.10.1
+flake8==6.1.0
