@@ -19,31 +19,9 @@ MedAi leverages the cutting-edge **IBM Granite 3.3-2B Instruct** model from Hugg
 
 > **Model**: `ibm-granite/granite-3.3-2b-instruct` - A state-of-the-art instruction-tuned language model specifically designed for complex reasoning tasks.
 
-## � Screenshots
 
-### 🏠 Home Page
-![MedAI Home Page](screenshots/home_page.png)
-*Main dashboard with quick access to all analysis features*
 
-### 💊 Drug Analysis Interface
-![Drug Analysis](screenshots/drug_analysis.png)
-*Interactive interface for medication input and analysis*
-
-### 📋 Medical History
-![Medical History](screenshots/medical_history.png)
-*Patient profile and conversation history management*
-
-### 📱 OCR Processing
-![OCR Processing](screenshots/ocr_processing.png)
-*Image-based prescription analysis using optical character recognition*
-
-### ⚠️ Interaction Alerts
-![Interaction Alerts](screenshots/interaction_alerts.png)
-*Real-time drug interaction warnings and recommendations*
-
-> **Note**: Screenshots show the latest UI design. To add your own screenshots, place them in the `screenshots/` directory in your project root.
-
-## �🚀 Features
+## 🚀 Features
 
 - 🔤 **Text Input**: Direct medication queries and interaction checks
 - 📸 **OCR Processing**: Extract medication information from prescription images
